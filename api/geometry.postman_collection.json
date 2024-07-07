@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "9c4f15c1-defc-4ca9-85e8-ab326f851003",
+		"name": "geometry veev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8366757"
+	},
+	"item": [
+		{
+			"name": "check rectangle 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/statistics/byStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"byStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check rectangle 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/statistics/byStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"byStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check circle1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/statistics/byStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"statistics",
+						"byStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check circle2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/geometry/check-point-in-circle?px=6&py=11&cx=6&cy=6&cr=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"geometry",
+						"check-point-in-circle"
+					],
+					"query": [
+						{
+							"key": "px",
+							"value": "6"
+						},
+						{
+							"key": "py",
+							"value": "11"
+						},
+						{
+							"key": "cx",
+							"value": "6"
+						},
+						{
+							"key": "cy",
+							"value": "6"
+						},
+						{
+							"key": "cr",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
