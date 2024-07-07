@@ -1,0 +1,16 @@
+{
+  "name": "veev-assignment",
+  "version": "1.0.0",
+  "description": "API aviation",
+  "main": "build/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/app.js",
+    "test": "jest"
+  },
+  "author": "Anya Suraski",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.12"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "veev-assignment",
   "version": "1.0.0",
-  "description": "API aviation",
+  "description": "API geometry",
   "main": "build/app.js",
   "scripts": {
     "build": "tsc",
