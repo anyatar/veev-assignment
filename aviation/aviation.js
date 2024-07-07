@@ -1,53 +1,50 @@
-const express = require('express');
-const axios = require('axios');
-const L = require('leaflet');
+// Initialize the map using OpenStreetMap
+const map = L.map('MyMap');
+console.log(map);
+map.setView([51.505, -0.09], 13); // Set initial coordinates and zoom level
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-const AVIATIONSTACK_API_KEY = 'b9cd96ac42c71147b3b65378182a94a5';
+const API_KEY = 'b9cd96ac42c71147b3b65378182a94a5';
 
-app.get('/', async (req, res) => {
-  try {
-    const flightNumber = 'LY001';
-    const url = `https://api.aviationstack.com/v1/flights?access_key=${AVIATIONSTACK_API_KEY}&flight_iata=${flightNumber}`;
-    const response = await axios.get(url);
-    const flightData = response.data.data[0];
+// Function to update flight position
+async function updateFlightPosition() {
+    try {
+        const flightCode = 'UA2402'; // Replace with the actual flight code
 
-    const { latitude, longitude } = flightData;
+        // This requires serving off of HTTP, or a paid subscription
 
-    // Initialize the map
-    const map = L.map('map').setView([latitude, longitude], 10);
+        /*
+        const response = await fetch(`http://api.aviationstack.com/v1/flights?flight_iata=${flightCode}&access_key=${API_KEY}`);
 
-    // Add a tile layer (use your preferred OSM tile provider)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
-    }).addTo(map);
+        const data = await response.json();
+        */
 
-    // Create a marker for the flight position
-    const flightMarker = L.marker([latitude, longitude]).addTo(map);
+        // if (data.data.length > 0) {
+        if (true) {
+            // const flight = data.data[0];
+            // const lat = parseFloat(flight.live.latitude);
+            // const lon = parseFloat(flight.live.longitude);
 
-    // Your logic to update the marker position goes here
+            lat = "55.5";
+            lon = "10.7";
+            // Update the marker position
+            if (marker) {
+                marker.setLatLng([lat, lon]);
+            } else {
+                marker = L.marker([lat, lon]).addTo(map);
+            }
+        } else {
+            console.error('Flight data not available.');
+        }
+    } catch (error) {
+        console.error('Error fetching flight data:', error);
+    }
+}
 
-    res.send(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <title>Flight Tracker</title>
-          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        </head>
-        <body>
-          <div id="map" style="height: 400px;"></div>
-          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        </body>
-      </html>
-    `);
-  } catch (error) {
-    console.error('Error fetching flight data:', error.message);
-    res.status(500).send('Error fetching flight data');
-  }
-});
+let marker = null;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Update flight position every 5 seconds
+setInterval(updateFlightPosition, 5000);

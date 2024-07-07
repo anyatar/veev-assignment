@@ -1,22 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Tracker</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
-    <div id="map" style="height: 400px;"></div>
+    <div id="MyMap"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        const map = L.map('map').setView([0, 0], 10); // Set initial view (center and zoom level)
-
-        // Add a tile layer (use your preferred OSM tile provider)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors',
-        }).addTo(map);
-
-        // Create a marker for the flight position (initially at [0, 0])
-        const flightMarker = L.marker([0, 0]).addTo(map);
-    </script>
+    <script src="aviation.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </body>
 </html>
+
